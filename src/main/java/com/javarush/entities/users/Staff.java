@@ -17,6 +17,8 @@ import java.util.Date;
 @ToString
 
 public class Staff {
+    public Staff() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

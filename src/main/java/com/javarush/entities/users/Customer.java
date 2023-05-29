@@ -17,6 +17,9 @@ import java.util.Date;
 
 public class Customer {
 
+    public Customer() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long customer_id;
