@@ -2,18 +2,26 @@ package com.javarush.entitie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "customer")
 public class Customer {
     @Id
     @Column(name = "customer_id", columnDefinition = "smallint UNSIGNED not null")
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name="store_id")
+    public Store store_id;
 
     @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
@@ -28,13 +36,21 @@ public class Customer {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @Column(name = "active", nullable = false)
-    private Boolean active = false;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "active")
+    ActiveIndicator active;
+
+
 
     @Column(name = "create_date", nullable = false)
     private Instant createDate;
 
-    @Column(name = "last_update")
-    private Instant lastUpdate;
 
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
+
+    public Customer(String firstName, String lastName, String email) {
+    }
 }

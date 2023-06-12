@@ -1,7 +1,8 @@
 package com.javarush.repository;
 
 
-import com.javarush.entitie.servise.Rental;
+
+import com.javarush.entitie.Rental;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

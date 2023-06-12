@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -39,8 +41,11 @@ public class Address {
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
     @OneToMany(mappedBy = "address")
     private Set<Customer> customers = new LinkedHashSet<>();

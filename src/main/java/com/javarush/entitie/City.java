@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -24,7 +26,10 @@ public class City {
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
 }

@@ -3,11 +3,8 @@ package com.javarush.session_provider;
 
 
 
-import com.javarush.entitie.films.*;
-import com.javarush.entitie.servise.Inventory;
-import com.javarush.entitie.servise.Payment;
-import com.javarush.entitie.servise.Rental;
-import com.javarush.entitie.users.*;
+import com.javarush.entitie.*;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -35,9 +32,9 @@ public class PropertiesSessionProvider implements SessionProvider {
 		.addAnnotatedClass(Actor.class)
 		.addAnnotatedClass(Category.class)
 		.addAnnotatedClass(Film.class)
-		.addAnnotatedClass(Film_actor.class)
-		.addAnnotatedClass(Film_category.class)
-		.addAnnotatedClass(Film_text.class)
+		.addAnnotatedClass(FilmActor.class)
+		.addAnnotatedClass(FilmCategory.class)
+		.addAnnotatedClass(FilmText.class)
 		.addAnnotatedClass(Language.class)
 		.addAnnotatedClass(Address.class)
 		.addAnnotatedClass(City.class)

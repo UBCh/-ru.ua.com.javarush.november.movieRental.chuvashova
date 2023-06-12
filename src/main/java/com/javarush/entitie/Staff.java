@@ -2,10 +2,14 @@ package com.javarush.entitie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.Date;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -13,7 +17,7 @@ import java.time.Instant;
 public class Staff {
     @Id
     @Column(name = "staff_id", columnDefinition = "tinyint UNSIGNED not null")
-    private Short id;
+    private Integer id;
 
     @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
@@ -25,7 +29,9 @@ public class Staff {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @Column(name = "picture")
+   @Lob
+   @Basic(fetch = FetchType.EAGER)
+    @Column(name = "picture",columnDefinition = "BLOB", nullable = false)
     private byte[] picture;
 
     @Column(name = "email", length = 50)
@@ -40,7 +46,9 @@ public class Staff {
     @Column(name = "password", length = 40)
     private String password;
 
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
 }

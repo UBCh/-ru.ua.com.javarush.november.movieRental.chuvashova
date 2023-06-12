@@ -2,17 +2,24 @@ package com.javarush.entitie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.descriptor.jdbc.SmallIntJdbcType;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "film")
+
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +40,7 @@ public class Film {
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
@@ -49,16 +56,19 @@ public class Film {
     @Column(name = "replacement_cost", nullable = false, precision = 5, scale = 2)
     private BigDecimal replacementCost;
 
-    @Lob
+    @Enumerated(EnumType.STRING)
     @Column(name = "rating")
-    private String rating;
+    Rating rating;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "special_features")
-    private String specialFeatures;
+    private Set<String> specialFeatures=new HashSet<>();
 
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
     @Column(name = "original_language")
     private Long originalLanguage1;
@@ -72,4 +82,6 @@ public class Film {
     @OneToMany(mappedBy = "film")
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
+    public Film(String kissGlory, String s, int i, int i1, int i2, double v, int i3, double v1, Rating rating, String s1) {
+    }
 }

@@ -1,7 +1,7 @@
 package com.javarush.repository;
 
 
-import com.javarush.entitie.users.Address;
+import com.javarush.entitie.Address;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

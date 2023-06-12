@@ -2,13 +2,18 @@ package com.javarush.entitie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 
+import org.hibernate.annotations.UpdateTimestamp;
+@NoArgsConstructor
 @Getter
 @Setter
+
 @Entity
 @Table(name = "payment")
 public class Payment {
@@ -35,10 +40,18 @@ public class Payment {
     @Column(name = "payment_date", nullable = false)
     private Instant paymentDate;
 
-    @Column(name = "last_update")
-    private Instant lastUpdate;
+    @Column(name="payment_time")
+    private Date payment_time;
 
-    @Column(name = "payment_time")
-    private Instant paymentTime;
+    @PrePersist
+    protected void onCreate() {
+        payment_time = new Date();
+    }
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
 }
+

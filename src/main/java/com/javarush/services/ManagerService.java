@@ -1,7 +1,8 @@
 package com.javarush.services;
 
 
-import com.javarush.entitie.films.Film;
+
+import com.javarush.entitie.Film;
 import com.javarush.entitie.Rating;
 import com.javarush.repository.FilmRepository;
 import com.javarush.session_provider.PropertiesSessionProvider;

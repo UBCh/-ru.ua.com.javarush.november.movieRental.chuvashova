@@ -1,10 +1,10 @@
 package com.javarush.services;
 
 
-import com.javarush.entitie.users.ActiveIndicator;
-import com.javarush.entitie.users.Address;
-import com.javarush.entitie.users.Customer;
-import com.javarush.entitie.users.Store;
+import com.javarush.entitie.ActiveIndicator;
+import com.javarush.entitie.Address;
+import com.javarush.entitie.Customer;
+import com.javarush.entitie.Store;
 import com.javarush.repository.AddressRepository;
 import com.javarush.repository.CustomerRepository;
 import com.javarush.repository.StoreRepository;

@@ -2,10 +2,12 @@ package com.javarush.entitie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -13,7 +15,7 @@ import java.time.Instant;
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rental_id", nullable = false)
+    @Column(name = "rental_id", nullable = false,columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 
     @Column(name = "rental_date", nullable = false)

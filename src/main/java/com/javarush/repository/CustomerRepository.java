@@ -1,8 +1,8 @@
 package com.javarush.repository;
 
 
-import com.javarush.entitie.films.Film;
-import com.javarush.entitie.users.Customer;
+
+import com.javarush.entitie.Customer;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
