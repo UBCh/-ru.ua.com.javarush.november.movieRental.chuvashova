@@ -1,4 +1,4 @@
-package com.javarush.entities.films;
+package com.javarush.entitie;
 
 public enum Rating {
 
