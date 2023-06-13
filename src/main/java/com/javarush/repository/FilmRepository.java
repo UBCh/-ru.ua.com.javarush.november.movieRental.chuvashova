@@ -23,7 +23,7 @@ public class FilmRepository implements EntityRepository<Film>{
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 	try(
 		Session session=sessionFactory.openSession()) {
-	    Query<Film> query = session.createQuery("from Film", Film.class);
+	    Query<Film> query = session.createNativeQuery("SELECT * FROM film", Film.class);
 	    return query.list();
 	}
 
@@ -39,7 +39,7 @@ public class FilmRepository implements EntityRepository<Film>{
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 	try(Session session=sessionFactory.openSession()){
 	    Transaction transaction=session.beginTransaction();
-	    session.persist(tableEntity);
+	    session.save(tableEntity);
 	    transaction.commit();
 	   }
 
@@ -53,8 +53,8 @@ public class FilmRepository implements EntityRepository<Film>{
     @Override
     public Film findById(long id) {
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try(Session session=sessionFactory.openSession()){
-	    Film film = session.find(Film.class, id);
-	    return  film;}
+	Query<Film> query = sessionFactory.openSession().createQuery("select f from Film f  where f.id = :ID", Film.class);
+	query.setParameter("ID", id);
+	return query.getSingleResult();
     }
 }

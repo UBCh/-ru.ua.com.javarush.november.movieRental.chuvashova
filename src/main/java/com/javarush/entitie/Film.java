@@ -21,6 +21,14 @@ import java.util.Set;
 @Table(name = "film")
 
 public class Film {
+
+    public Film(String title, String description, Integer releaseYear, Rating rating) {
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.rating = rating;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id", columnDefinition = "smallint UNSIGNED not null")
@@ -60,10 +68,9 @@ public class Film {
     @Column(name = "rating")
     Rating rating;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
+
     @Column(name = "special_features")
-    private Set<String> specialFeatures=new HashSet<>();
+    private String specialFeatures;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,6 +89,5 @@ public class Film {
     @OneToMany(mappedBy = "film")
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
-    public Film(String kissGlory, String s, int i, int i1, int i2, double v, int i3, double v1, Rating rating, String s1) {
-    }
+
 }
