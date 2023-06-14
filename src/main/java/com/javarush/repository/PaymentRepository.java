@@ -8,12 +8,21 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.List;
+import java.util.Map;
+
 public class PaymentRepository implements EntityRepository<Payment>{
 
     SessionProvider sessionProvider;
 
     public PaymentRepository(SessionProvider sessionProvider) {
 	this.sessionProvider = sessionProvider;
+    }
+
+
+    @Override
+    public void create(Map<String, Object> map) {
+
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Map;
 
 public class FilmRepository implements EntityRepository<Film>{
 
@@ -26,6 +27,12 @@ public class FilmRepository implements EntityRepository<Film>{
 	    Query<Film> query = session.createNativeQuery("SELECT * FROM film", Film.class);
 	    return query.list();
 	}
+
+    }
+
+
+    @Override
+    public void create(Map<String, Object> map) {
 
     }
 

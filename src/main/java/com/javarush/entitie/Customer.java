@@ -15,7 +15,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "customer")
 public class Customer {
+
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", columnDefinition = "smallint UNSIGNED not null")
     private Integer id;
 
@@ -51,6 +54,5 @@ public class Customer {
     @Column(name = "last_update")
     private Date last_update;
 
-    public Customer(String firstName, String lastName, String email) {
-    }
+
 }

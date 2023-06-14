@@ -11,27 +11,31 @@ import com.javarush.repository.StoreRepository;
 import com.javarush.session_provider.PropertiesSessionProvider;
 import com.javarush.session_provider.SessionProvider;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CustomerService {
 
     SessionProvider sessionProvider=new PropertiesSessionProvider();
 
 
 
-     public  void createNewCustomer(String first_name, String last_name, String email, int idAddress){
+     public  void createNewCustomer(Store store,String first_name, String last_name, String email, Address address){
 	 CustomerRepository customerRepository=new CustomerRepository(sessionProvider) ;
-	Customer newCustomer=new Customer(first_name, last_name, email);
-	 newCustomer.setActive(ActiveIndicator.Y);
-         newCustomer.setAddress(getAddress(idAddress));
-	 newCustomer.store_id=getStore(idAddress);
-	 customerRepository.save(newCustomer);
+	 Map<String,Object> map=new HashMap<>();
+	 map.put("FirstName", first_name);
+	 map.put("LastName", last_name);
+	 map.put("Email", email);
+	 map.put("Address", address);
+	 customerRepository.create(map);
      }
 
-     private Address getAddress(int idAddress){
+     public Address getAddress(int idAddress){
 	 AddressRepository addressRepository=new AddressRepository(sessionProvider);
 	 return addressRepository.findById(idAddress);
      }
 
-    private Store getStore(int idAddress){
+    public Store getStore(int idAddress){
 	StoreRepository storeRepository = new StoreRepository(sessionProvider);
 	return storeRepository.findById(idAddress);
     }

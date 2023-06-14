@@ -6,6 +6,9 @@ import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.List;
+import java.util.Map;
+
 public class AddressRepository implements EntityRepository<Address>{
 
     SessionProvider sessionProvider;
@@ -14,6 +17,11 @@ public class AddressRepository implements EntityRepository<Address>{
         this.sessionProvider = sessionProvider;
     }
 
+
+    @Override
+    public void create(Map<String, Object> map) {
+
+    }
 
     @Override
     public void delete(Address tableEntity) {
