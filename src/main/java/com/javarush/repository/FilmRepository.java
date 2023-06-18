@@ -2,12 +2,15 @@ package com.javarush.repository;
 
 
 import com.javarush.entity.Film;
+import com.javarush.entity.Language;
+import com.javarush.entity.Rating;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +37,24 @@ public class FilmRepository implements EntityRepository<Film> {
 
     @Override
     public void create(Map<String, Object> map) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Film film = new Film();
+	film.setTitle((String) map.get("title"));
+	film.setReleaseYear((Integer) map.get("releaseYear"));
+	film.setLanguage((Language) map.get("language"));
+	film.setOriginalLanguage((Language) map.get("original_language"));
+	film.setRentalDuration((Short) map.get("rentalDuration"));
+	film.setRentalRate((BigDecimal) map.get("rentalRate"));
+	film.setLength((Integer) map.get("length"));
+	film.setReplacementCost((BigDecimal) map.get("replacementCost"));
+	film.setRating((Rating) map.get("rating"));
+	film.setSpecialFeatures((String) map.get("specialFeatures"));
+	film.setOriginalLanguage1((Long) map.get("original_language1"));
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.save(film);
+	    transaction.commit();
+	}
 
     }
 
