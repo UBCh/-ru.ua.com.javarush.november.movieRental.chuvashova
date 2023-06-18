@@ -31,15 +31,4 @@ public class AddressService {
 	return addressRepository.findByContent(phone);
     }
 
-
-    public Address getAddress(int idAddress) {
-	return addressRepository.findById(idAddress);
-    }
-
-
-//    public Store getStore(int idAddress) {
-
-//	return storeRepository.findById(idAddress);
-//    }
-
 }

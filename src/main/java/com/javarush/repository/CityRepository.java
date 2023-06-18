@@ -2,6 +2,7 @@ package com.javarush.repository;
 
 import com.javarush.entity.City;
 import com.javarush.session_provider.SessionProvider;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
@@ -42,7 +43,10 @@ public class CityRepository implements EntityRepository<City> {
 
     @Override
     public City findById(long id) {
-	return null;
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(City.class, id);
+	}
     }
 
 
