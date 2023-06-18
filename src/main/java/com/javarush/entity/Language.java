@@ -1,4 +1,4 @@
-package com.javarush.entitie;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -19,8 +18,10 @@ public class Language {
     @Column(name = "language_id", columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 
+
     @Column(name = "name", nullable = false, length = 20)
     private String name;
+
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,10 +1,7 @@
 package com.javarush.session_provider;
 
 
-
-
-import com.javarush.entitie.*;
-
+import com.javarush.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -25,6 +22,7 @@ public class PropertiesSessionProvider implements SessionProvider {
 	properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
 	properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/movie");
     }
+
 
     @Override
     public SessionFactory getSessionFactory() {

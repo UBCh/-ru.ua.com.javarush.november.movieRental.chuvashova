@@ -1,4 +1,4 @@
-package com.javarush.entitie;
+package com.javarush.entity;
 
 public enum Rating {
 
@@ -7,6 +7,7 @@ public enum Rating {
     PG("PG"),
     PG13("PG-13"),
     R("R");
+
 
     Rating(String i) {
     }

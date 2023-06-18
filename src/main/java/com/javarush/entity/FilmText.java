@@ -1,4 +1,4 @@
-package com.javarush.entitie;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +13,6 @@ import lombok.Setter;
 public class FilmText {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id", columnDefinition = "smallint UNSIGNED not null")
@@ -23,10 +22,9 @@ public class FilmText {
     @Column(name = "title", nullable = false)
     private String title;
 
+
     @Lob
     @Column(name = "description")
     private String description;
-
-
 
 }

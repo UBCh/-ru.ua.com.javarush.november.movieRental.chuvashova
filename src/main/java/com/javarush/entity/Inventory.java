@@ -1,4 +1,4 @@
-package com.javarush.entitie;
+package com.javarush.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,26 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-@Table(name = "film_actor")
-public class FilmActor {
-
+@NoArgsConstructor
+@Table(name = "inventory")
+public class Inventory {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "actor_id", nullable = false, columnDefinition = "tinyint UNSIGNED not null")
-    private Actor actor;
+    @Column(name = "inventory_id", nullable = false, columnDefinition = "tinyint UNSIGNED not null")
+    private Integer id;
 
-    @MapsId("filmId")
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "film_id", nullable = false)
     private Film film;
+
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

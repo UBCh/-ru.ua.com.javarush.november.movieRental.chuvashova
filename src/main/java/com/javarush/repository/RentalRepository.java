@@ -1,20 +1,19 @@
 package com.javarush.repository;
 
 
-
-import com.javarush.entitie.Rental;
+import com.javarush.entity.Rental;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.List;
 import java.util.Map;
 
-public class RentalRepository implements  EntityRepository<Rental>{
+public class RentalRepository implements EntityRepository<Rental> {
 
 
     SessionProvider sessionProvider;
+
 
     public RentalRepository(SessionProvider sessionProvider) {
 	this.sessionProvider = sessionProvider;
@@ -26,29 +25,39 @@ public class RentalRepository implements  EntityRepository<Rental>{
 
     }
 
+
     @Override
     public void delete(Rental tableEntity) {
 
     }
 
+
     @Override
     public void save(Rental tableEntity) {
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Rental rental=  tableEntity;
-	try(Session session=sessionFactory.openSession()){
-	    Transaction transaction=session.beginTransaction();
+	Rental rental = tableEntity;
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
 	    session.save(rental);
 	    transaction.commit();
 	}
     }
+
 
     @Override
     public void update(Rental tableEntity) {
 
     }
 
+
     @Override
     public Rental findById(long id) {
+	return null;
+    }
+
+
+    @Override
+    public Rental findByContent(String content) {
 	return null;
     }
 }

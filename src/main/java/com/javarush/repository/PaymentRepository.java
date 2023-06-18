@@ -1,19 +1,18 @@
 package com.javarush.repository;
 
 
-
-import com.javarush.entitie.Payment;
+import com.javarush.entity.Payment;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.List;
 import java.util.Map;
 
-public class PaymentRepository implements EntityRepository<Payment>{
+public class PaymentRepository implements EntityRepository<Payment> {
 
     SessionProvider sessionProvider;
+
 
     public PaymentRepository(SessionProvider sessionProvider) {
 	this.sessionProvider = sessionProvider;
@@ -25,32 +24,43 @@ public class PaymentRepository implements EntityRepository<Payment>{
 
     }
 
+
     @Override
     public void delete(Payment tableEntity) {
 
     }
 
+
     @Override
     public void save(Payment tableEntity) {
-        SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-       Payment payment=  tableEntity;
-        try(Session session=sessionFactory.openSession()){
-            Transaction transaction=session.beginTransaction();
-            session.save(payment);
-            transaction.commit();
-        }
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Payment payment = tableEntity;
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.save(payment);
+	    transaction.commit();
+	}
     }
+
 
     @Override
     public void update(Payment tableEntity) {
 
     }
 
+
     @Override
     public Payment findById(long id) {
-        SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-        try(Session session=sessionFactory.openSession()){
-            Payment payment = session.find(Payment.class, id);
-            return  payment;}
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    Payment payment = session.find(Payment.class, id);
+	    return payment;
+	}
+    }
+
+
+    @Override
+    public Payment findByContent(String content) {
+	return null;
     }
 }

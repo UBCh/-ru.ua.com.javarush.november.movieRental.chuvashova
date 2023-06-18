@@ -1,4 +1,4 @@
-package com.javarush.entitie;
+package com.javarush.entity;
 
 public enum ActiveIndicator {
 
