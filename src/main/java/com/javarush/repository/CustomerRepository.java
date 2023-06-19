@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class CustomerRepository implements EntityRepository<Customer> {
@@ -41,6 +42,12 @@ public class CustomerRepository implements EntityRepository<Customer> {
 	    session.save(customer);
 	    transaction.commit();
 	}
+    }
+
+
+    @Override
+    public List<Customer> getAll() {
+	return null;
     }
 
 

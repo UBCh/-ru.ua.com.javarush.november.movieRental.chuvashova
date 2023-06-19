@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Map;
 
 public class LanguageRepository implements EntityRepository<Language> {
@@ -22,6 +23,12 @@ public class LanguageRepository implements EntityRepository<Language> {
     @Override
     public void create(Map<String, Object> map) {
 
+    }
+
+
+    @Override
+    public List<Language> getAll() {
+	return null;
     }
 
 

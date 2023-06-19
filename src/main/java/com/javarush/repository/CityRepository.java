@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Map;
 
 public class CityRepository implements EntityRepository<City> {
@@ -20,6 +21,12 @@ public class CityRepository implements EntityRepository<City> {
     @Override
     public void create(Map<String, Object> map) {
 
+    }
+
+
+    @Override
+    public List<City> getAll() {
+	return null;
     }
 
 

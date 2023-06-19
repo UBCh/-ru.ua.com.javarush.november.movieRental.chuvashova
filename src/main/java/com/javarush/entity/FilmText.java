@@ -14,7 +14,7 @@ public class FilmText {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "film_id", columnDefinition = "smallint UNSIGNED not null")
     private Integer filmId;
 

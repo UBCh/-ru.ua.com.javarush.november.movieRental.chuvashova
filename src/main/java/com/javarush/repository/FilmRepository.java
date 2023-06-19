@@ -50,6 +50,7 @@ public class FilmRepository implements EntityRepository<Film> {
 	film.setRating((Rating) map.get("rating"));
 	film.setSpecialFeatures((String) map.get("specialFeatures"));
 	film.setOriginalLanguage1((Long) map.get("original_language1"));
+	film.setDescription(((String) map.get("description")));
 	try (Session session = sessionFactory.openSession()) {
 	    Transaction transaction = session.beginTransaction();
 	    session.save(film);

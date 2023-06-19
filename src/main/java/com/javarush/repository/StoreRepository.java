@@ -6,6 +6,7 @@ import com.javarush.session_provider.SessionProvider;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Map;
 
 public class StoreRepository implements EntityRepository<Store> {
@@ -21,6 +22,12 @@ public class StoreRepository implements EntityRepository<Store> {
     @Override
     public void create(Map<String, Object> map) {
 
+    }
+
+
+    @Override
+    public List<Store> getAll() {
+	return null;
     }
 
 

@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class AddressRepository implements EntityRepository<Address> {
@@ -38,6 +39,12 @@ public class AddressRepository implements EntityRepository<Address> {
 	    session.save(address);
 	    transaction.commit();
 	}
+    }
+
+
+    @Override
+    public List<Address> getAll() {
+	return null;
     }
 
 
