@@ -1,7 +1,7 @@
 package com.javarush.services;
 
+import com.javarush.DTO.AdressDTO;
 import com.javarush.entity.Address;
-import com.javarush.entity.City;
 import com.javarush.repository.EntityRepository;
 
 import java.util.HashMap;
@@ -17,18 +17,18 @@ public class AddressService {
     }
 
 
-    public Address createNewAddress(String adress, String address2, String district, City city, String postalCod, String phone) {
+    public Address createNewAddress(AdressDTO adressDTO) {
 
 	Map<String, Object> map = new HashMap<>();
-	map.put("address", adress);
-	map.put("address2", address2);
-	map.put("district", district);
-	map.put("city", city);
-	map.put("postalCod", postalCod);
-	map.put("phone", phone);
+	map.put("address", adressDTO.getAdress());
+	map.put("address2", adressDTO.getAddress2());
+	map.put("district", adressDTO.getDistrict());
+	map.put("city", adressDTO.getCity());
+	map.put("postalCod", adressDTO.getPostalCod());
+	map.put("phone", adressDTO.getPhone());
 
 	addressRepository.create(map);
-	return addressRepository.findByContent(phone);
+	return addressRepository.findByContent(adressDTO.getPhone());
     }
 
 }

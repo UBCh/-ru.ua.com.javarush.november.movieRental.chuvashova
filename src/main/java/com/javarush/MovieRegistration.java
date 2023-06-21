@@ -3,14 +3,18 @@ package com.javarush;
 import com.javarush.DTO.FilmDTO;
 import com.javarush.entity.*;
 import com.javarush.repository.*;
-import com.javarush.services.*;
+import com.javarush.services.FilmActorService;
+import com.javarush.services.FilmCategoryService;
+import com.javarush.services.FilmService;
+import com.javarush.services.FilmTextService;
 import com.javarush.session_provider.PropertiesSessionProvider;
 
 import java.util.List;
 
-public class MovieRentalRegistration {
+public class MovieRegistration {
 
-    private final Integer[] idActor = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 10};
+
+    private final Integer[] idActor;
 
 
     private final EntityRepository<Film> filmRepository = new FilmRepository(new PropertiesSessionProvider());
@@ -23,9 +27,6 @@ public class MovieRentalRegistration {
 
 
     private final EntityRepository<FilmCategory> filmCategoryRepository = new FilmCategoryRepository(new PropertiesSessionProvider());
-
-
-    private final EntityRepository<Language> languageRepository = new LanguageRepository(new PropertiesSessionProvider());
 
 
     private final EntityRepository<Actor> actorRepository = new ActorRepository(new PropertiesSessionProvider());
@@ -43,9 +44,6 @@ public class MovieRentalRegistration {
     private final FilmCategoryService filmCategoryService = new FilmCategoryService(filmCategoryRepository, categoryRepository);
 
 
-    LanguageService languageService = new LanguageService(languageRepository);
-
-
     FilmActorService filmActorService = new FilmActorService(filmActorRepository, filmRepository, actorRepository);
 
 
@@ -53,8 +51,9 @@ public class MovieRentalRegistration {
     FilmDTO filmDTO;
 
 
-    public MovieRentalRegistration(FilmDTO filmDTO) {
+    public MovieRegistration(FilmDTO filmDTO) {
 	this.filmDTO = filmDTO;
+	this.idActor = filmDTO.getIdActor();
     }
 
 
@@ -63,7 +62,7 @@ public class MovieRentalRegistration {
 	Film film = filmService.addMovie(filmDTO);
 	addTextMovie(film);
 	addFilmActor(film);
-	addCategoryMovie(film, "Comedy");
+	addCategoryMovie(film, filmDTO.getCategory());
 	printFilm(film);
     }
 

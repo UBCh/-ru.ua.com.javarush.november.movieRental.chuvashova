@@ -53,18 +53,29 @@ public class RentalRepository implements EntityRepository<Rental> {
 
     @Override
     public void update(Rental tableEntity) {
-
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Rental rental = tableEntity;
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.update(rental);
+	    transaction.commit();
+	}
     }
 
 
     @Override
     public Rental findById(long id) {
-	return null;
+
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(Rental.class, id);
+	}
     }
 
 
     @Override
     public Rental findByContent(String content) {
+
 	return null;
     }
 }

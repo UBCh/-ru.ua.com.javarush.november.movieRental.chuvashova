@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -20,7 +20,7 @@ public class Rental {
 
 
     @Column(name = "rental_date", nullable = false)
-    private Instant rentalDate;
+    private Date rentalDate;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -34,7 +34,7 @@ public class Rental {
 
 
     @Column(name = "return_date")
-    private Instant returnDate;
+    private Date returnDate;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -43,6 +43,6 @@ public class Rental {
 
 
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Date lastUpdate;
 
 }

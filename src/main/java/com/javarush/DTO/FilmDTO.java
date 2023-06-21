@@ -9,41 +9,49 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
+
 public class FilmDTO {
 
 
-    String title;
+    private String title;
 
 
-    Integer releaseYear;
+    private Integer releaseYear;
 
 
-    Language language;
+    private Language language;
 
 
-    Language original_language;
+    private Language original_language;
 
 
-    Short rentalDuration;
+    private Short rentalDuration;
 
 
-    BigDecimal rentalRate;
+    private BigDecimal rentalRate;
 
 
-    Integer length;
+    private Integer length;
 
 
-    BigDecimal replacementCost;
+    private BigDecimal replacementCost;
 
 
-    Rating rating;
+    private Rating rating;
 
 
-    String specialFeatures;
+    private String specialFeatures;
 
 
-    Long original_language1;
+    private Long original_language1;
 
 
-    String description;
+    private String description;
+
+
+    private Integer[] idActor;
+
+
+    private String category;
+
 }

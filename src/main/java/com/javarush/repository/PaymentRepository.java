@@ -6,6 +6,7 @@ import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Map;
@@ -67,7 +68,11 @@ public class PaymentRepository implements EntityRepository<Payment> {
 
 
     @Override
-    public Payment findByContent(String content) {
-	return null;
+    public Payment findByContent(String payment_date) {
+
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Payment> query = sessionFactory.openSession().createQuery("select p from Payment p  where p.paymentDate = :payment_date", Payment.class);
+	query.setParameter("payment_date", payment_date);
+	return query.getSingleResult();
     }
 }
