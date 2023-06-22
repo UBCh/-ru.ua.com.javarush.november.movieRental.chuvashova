@@ -5,6 +5,7 @@ import com.javarush.DTO.CustomerDTO;
 import com.javarush.entity.Customer;
 import com.javarush.entity.Store;
 import com.javarush.repository.EntityRepository;
+import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class CustomerService {
     }
 
 
+    @SneakyThrows
+
     public Customer createNewCustomer(CustomerDTO customerDTO) {
 	Map<String, Object> map = new HashMap<>();
 	map.put("Store", customerDTO.getStore());
@@ -42,4 +45,8 @@ public class CustomerService {
 	return storeRepository.findById(idAddress);
     }
 
+
+    public Customer getCustomerById(Integer idCustomer) {
+	return customerRepository.findById(idCustomer);
+    }
 }

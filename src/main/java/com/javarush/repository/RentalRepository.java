@@ -1,12 +1,17 @@
 package com.javarush.repository;
 
 
+import com.javarush.entity.Customer;
+import com.javarush.entity.Inventory;
 import com.javarush.entity.Rental;
+import com.javarush.entity.Staff;
 import com.javarush.session_provider.SessionProvider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +28,18 @@ public class RentalRepository implements EntityRepository<Rental> {
 
     @Override
     public void create(Map<String, Object> map) {
-
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Rental rental = new Rental();
+	rental.setRentalDate(new Date());
+	rental.setLast_update(new Date());
+	rental.setInventory((Inventory) map.get("inventory"));
+	rental.setCustomer((Customer) map.get("customer"));
+	rental.setStaff((Staff) map.get("staff"));
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.save(rental);
+	    transaction.commit();
+	}
     }
 
 
@@ -74,8 +90,18 @@ public class RentalRepository implements EntityRepository<Rental> {
 
 
     @Override
-    public Rental findByContent(String content) {
+    public Rental findByContent(String idInventory) {
 
 	return null;
     }
+
+
+    @Override
+    public List<Rental> findList(String inventoryId) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Rental> query = sessionFactory.openSession().createNativeQuery("select * from rental   where inventory_id = :inventory_id", Rental.class);
+	query.setParameter("inventory_id", inventoryId);
+	return query.list();
+    }
 }
+

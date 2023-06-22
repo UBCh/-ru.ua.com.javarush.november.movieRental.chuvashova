@@ -69,4 +69,10 @@ public class CategoryRepository implements EntityRepository<Category> {
 	query.setParameter("name", content);
 	return query.getSingleResult();
     }
+
+
+    @Override
+    public List<Category> findList(String id) {
+	return null;
+    }
 }

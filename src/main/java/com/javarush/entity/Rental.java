@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class Rental {
     private Integer id;
 
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "rental_date", nullable = false)
     private Date rentalDate;
 
@@ -33,6 +35,7 @@ public class Rental {
     private Customer customer;
 
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "return_date")
     private Date returnDate;
 
@@ -42,7 +45,9 @@ public class Rental {
     private Staff staff;
 
 
-    @Column(name = "last_update", nullable = false)
-    private Date lastUpdate;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_update")
+    private Date last_update;
 
 }

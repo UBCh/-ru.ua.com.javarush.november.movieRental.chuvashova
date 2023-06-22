@@ -61,6 +61,12 @@ public class CustomerRepository implements EntityRepository<Customer> {
 
 
     @Override
+    public List<Customer> findList(String id) {
+	return null;
+    }
+
+
+    @Override
     public void delete(Customer tableEntity) {
 
     }

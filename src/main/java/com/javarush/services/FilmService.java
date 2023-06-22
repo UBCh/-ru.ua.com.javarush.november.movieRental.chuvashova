@@ -3,6 +3,7 @@ package com.javarush.services;
 import com.javarush.DTO.FilmDTO;
 import com.javarush.entity.Film;
 import com.javarush.repository.EntityRepository;
+import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ public class FilmService {
     }
 
 
+    @SneakyThrows
     public Film addMovie(FilmDTO filmDTO
     ) {
 
@@ -39,4 +41,10 @@ public class FilmService {
 	return filmRepository.findByContent(filmDTO.getTitle());
     }
 
+
+    @SneakyThrows
+    public Film getFilmByTitle(String title) {
+	return filmRepository.findByContent(title);
+
+    }
 }

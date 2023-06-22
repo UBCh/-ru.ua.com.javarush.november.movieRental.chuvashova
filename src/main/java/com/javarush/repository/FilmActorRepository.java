@@ -88,4 +88,13 @@ public class FilmActorRepository implements EntityRepository<FilmActor> {
     public FilmActor findByContent(String content) {
 	return null;
     }
+
+
+    @Override
+    public List<FilmActor> findList(String filmId) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<FilmActor> query = sessionFactory.openSession().createNativeQuery("select * from film_Actor   where film_id = :film_id", FilmActor.class);
+	query.setParameter("film_id", filmId);
+	return query.list();
+    }
 }

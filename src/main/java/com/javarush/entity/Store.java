@@ -6,16 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "store")
+@Table(name = "store", uniqueConstraints = {
+	@UniqueConstraint(name = "uc_store_staff_id", columnNames = {"staff_id"})
+})
 public class Store {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id", columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 
@@ -31,7 +35,12 @@ public class Store {
     private Date last_update;
 
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "manager_staff_id", nullable = false)
+    private Staff staff;
+
+
     @Column(name = "staff_id")
-    private Long staffId;
+    private BigInteger staffId;
 
 }

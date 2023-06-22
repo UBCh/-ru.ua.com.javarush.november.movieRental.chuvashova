@@ -2,6 +2,7 @@ package com.javarush.services;
 
 import com.javarush.entity.City;
 import com.javarush.repository.EntityRepository;
+import lombok.SneakyThrows;
 
 public class CityService {
 
@@ -13,6 +14,7 @@ public class CityService {
     }
 
 
+    @SneakyThrows
     public City getCity(String city) {
 
 	return cityRepository.findByContent(city);

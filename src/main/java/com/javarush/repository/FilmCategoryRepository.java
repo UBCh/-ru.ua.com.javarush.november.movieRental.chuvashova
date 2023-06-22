@@ -71,4 +71,10 @@ public class FilmCategoryRepository implements EntityRepository<FilmCategory> {
 	return null;
     }
 
+
+    @Override
+    public List<FilmCategory> findList(String id) {
+	return null;
+    }
+
 }

@@ -14,7 +14,9 @@ import java.util.Date;
 @Entity
 @Table(name = "staff")
 public class Staff {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id", columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 
@@ -32,10 +34,8 @@ public class Staff {
     private Address address;
 
 
-    @Lob
-    @Basic(fetch = FetchType.EAGER)
-    @Column(name = "picture", columnDefinition = "BLOB", nullable = false)
-    private byte[] picture;
+    @Column(name = "picture")
+    private String picture;
 
 
     @Column(name = "email", length = 50)

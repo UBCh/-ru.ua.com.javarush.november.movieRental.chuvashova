@@ -4,6 +4,7 @@ import com.javarush.entity.Category;
 import com.javarush.entity.Film;
 import com.javarush.entity.FilmCategory;
 import com.javarush.repository.EntityRepository;
+import lombok.SneakyThrows;
 
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class FilmCategoryService {
     }
 
 
+    @SneakyThrows
     public void addFilmCategory(Film film, String category) {
 	Category cat = categoryRepository.findByContent(category);
 	FilmCategory filmCategory = new FilmCategory();

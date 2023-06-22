@@ -66,4 +66,10 @@ public class LanguageRepository implements EntityRepository<Language> {
 	query.setParameter("name", name);
 	return query.getSingleResult();
     }
+
+
+    @Override
+    public List<Language> findList(String id) {
+	return null;
+    }
 }

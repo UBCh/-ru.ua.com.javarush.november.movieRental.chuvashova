@@ -21,6 +21,7 @@ public class StaffRepository implements EntityRepository<Staff> {
     @Override
     public void create(Map<String, Object> map) {
 
+
     }
 
 
@@ -59,6 +60,12 @@ public class StaffRepository implements EntityRepository<Staff> {
 
     @Override
     public Staff findByContent(String content) {
+	return null;
+    }
+
+
+    @Override
+    public List<Staff> findList(String id) {
 	return null;
     }
 }

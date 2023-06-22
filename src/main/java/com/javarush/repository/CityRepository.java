@@ -65,4 +65,10 @@ public class CityRepository implements EntityRepository<City> {
 	return query.getSingleResult();
     }
 
+
+    @Override
+    public List<City> findList(String id) {
+	return null;
+    }
+
 }

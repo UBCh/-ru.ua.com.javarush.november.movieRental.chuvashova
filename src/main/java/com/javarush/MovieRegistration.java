@@ -47,7 +47,6 @@ public class MovieRegistration {
     FilmActorService filmActorService = new FilmActorService(filmActorRepository, filmRepository, actorRepository);
 
 
-    //    method of receiving data from film
     FilmDTO filmDTO;
 
 

@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -43,7 +42,7 @@ public class Payment {
 
 
     @Column(name = "payment_date", nullable = false)
-    private Instant paymentDate;
+    private Date paymentDate;
 
 
     @Column(name = "payment_time")

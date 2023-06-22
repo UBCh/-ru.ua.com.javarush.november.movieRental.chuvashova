@@ -60,7 +60,17 @@ public class StoreRepository implements EntityRepository<Store> {
 
 
     @Override
-    public Store findByContent(String content) {
+    public Store findByContent(String idStaff) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Store> query = sessionFactory.openSession().createNativeQuery("select * from store   where staff_id = :staff_id", Store.class);
+	query.setParameter("staff_id", idStaff);
+	return query.getSingleResult();
+
+    }
+
+
+    @Override
+    public List<Store> findList(String id) {
 	return null;
     }
 }

@@ -16,6 +16,7 @@ import java.util.Date;
 public class Inventory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id", nullable = false, columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 
@@ -25,9 +26,13 @@ public class Inventory {
     private Film film;
 
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
+
+
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
     private Date last_update;
-
 }

@@ -40,10 +40,8 @@ public class FilmActorService {
 
     public List<Actor> getActors(Integer idFilm) {
 	List<Actor> actorList = new ArrayList<>();
-	Film s = null;
 	Integer id = 0;
-	FilmActor byId = filmActorRepository.findById(idFilm);
-	for (FilmActor f : filmActorRepository.getAll()) {
+	for (FilmActor f : filmActorRepository.findList(String.valueOf(idFilm))) {
 	    id = f.getFilm().getId();
 	    if (id.equals(idFilm)) {
 		actorList.add(f.getActor());

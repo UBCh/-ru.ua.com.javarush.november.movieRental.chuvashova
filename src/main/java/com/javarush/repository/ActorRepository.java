@@ -61,4 +61,11 @@ public class ActorRepository implements EntityRepository<Actor> {
     public Actor findByContent(String content) {
 	return null;
     }
+
+
+    @Override
+    public List<Actor> findList(String sign) {
+	return null;
+    }
+
 }

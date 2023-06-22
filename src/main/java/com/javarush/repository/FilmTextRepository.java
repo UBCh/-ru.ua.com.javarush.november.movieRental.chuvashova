@@ -73,4 +73,10 @@ public class FilmTextRepository implements EntityRepository<FilmText> {
     public FilmText findByContent(String content) {
 	return null;
     }
+
+
+    @Override
+    public List<FilmText> findList(String id) {
+	return null;
+    }
 }

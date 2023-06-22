@@ -99,4 +99,11 @@ public class FilmRepository implements EntityRepository<Film> {
 	query.setParameter("title", title);
 	return query.getSingleResult();
     }
+
+
+    @Override
+    public List<Film> findList(String sign) {
+	return null;
+    }
+
 }

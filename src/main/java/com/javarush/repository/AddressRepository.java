@@ -57,6 +57,12 @@ public class AddressRepository implements EntityRepository<Address> {
 
 
     @Override
+    public List<Address> findList(String sign) {
+	return null;
+    }
+
+
+    @Override
     public void delete(Address tableEntity) {
 
     }

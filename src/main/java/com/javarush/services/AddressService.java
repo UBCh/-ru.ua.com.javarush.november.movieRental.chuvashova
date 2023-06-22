@@ -3,6 +3,7 @@ package com.javarush.services;
 import com.javarush.DTO.AdressDTO;
 import com.javarush.entity.Address;
 import com.javarush.repository.EntityRepository;
+import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ public class AddressService {
     }
 
 
+    @SneakyThrows
     public Address createNewAddress(AdressDTO adressDTO) {
 
 	Map<String, Object> map = new HashMap<>();
