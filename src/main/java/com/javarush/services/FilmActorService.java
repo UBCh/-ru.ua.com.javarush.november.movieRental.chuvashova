@@ -19,7 +19,9 @@ public class FilmActorService {
     EntityRepository<Actor> actorRepository;
 
 
-    public FilmActorService(EntityRepository<FilmActor> filmActorRepository, EntityRepository<Film> filmRepository, EntityRepository<Actor> actorRepository) {
+    public FilmActorService(EntityRepository<FilmActor> filmActorRepository,
+			    EntityRepository<Film> filmRepository,
+			    EntityRepository<Actor> actorRepository) {
 	this.filmActorRepository = filmActorRepository;
 	this.filmRepository = filmRepository;
 	this.actorRepository = actorRepository;

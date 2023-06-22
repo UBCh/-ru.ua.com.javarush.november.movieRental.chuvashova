@@ -71,11 +71,6 @@ public class RentMovie {
     }
 
 
-    public Double getDeposit() {
-	return deposit;
-    }
-
-
     public RentMovie setDeposit(Double deposit) {
 	this.deposit = deposit;
 	return this;

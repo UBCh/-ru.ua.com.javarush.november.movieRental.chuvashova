@@ -9,8 +9,6 @@ import com.javarush.services.FilmService;
 import com.javarush.services.FilmTextService;
 import com.javarush.session_provider.PropertiesSessionProvider;
 
-import java.util.List;
-
 public class MovieRegistration {
 
 
@@ -87,9 +85,6 @@ public class MovieRegistration {
 	System.out.println(film.getId() + "=id");
 	System.out.println(film.getTitle() + "=title");
 	System.out.println(filmTextRepository.findById(film.getId()).getDescription() + "=description");
-	System.out.println("actor");
-	List<Actor> list = filmActorService.getActors(film.getId());
-	list.forEach(System.out::println);
 
     }
 }

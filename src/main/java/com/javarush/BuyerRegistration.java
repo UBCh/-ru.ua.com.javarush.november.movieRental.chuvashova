@@ -15,9 +15,6 @@ import com.javarush.session_provider.PropertiesSessionProvider;
 public class BuyerRegistration {
 
 
-//    method of receiving data from the client
-
-
     EntityRepository<Customer> customerRepository = new CustomerRepository(new PropertiesSessionProvider());
 
 
@@ -30,12 +27,17 @@ public class BuyerRegistration {
     EntityRepository<City> cityRepository = new CityRepository(new PropertiesSessionProvider());
 
 
+    AddressService addressService = new AddressService(addressRepository);
+
+
+    CustomerService customerService = new CustomerService(customerRepository, storeRepository);
+
+
+    CityService cityService = new CityService(cityRepository);
+
+
     public void registerCustomer(CustomerDTO customerDTO, AdressDTO adressDTO) {
 
-
-	AddressService addressService = new AddressService(addressRepository);
-	CustomerService customerService = new CustomerService(customerRepository, storeRepository);
-	CityService cityService = new CityService(cityRepository);
 
 	City city = cityService.getCity(customerDTO.getCityName());
 	adressDTO.setCity(city);
