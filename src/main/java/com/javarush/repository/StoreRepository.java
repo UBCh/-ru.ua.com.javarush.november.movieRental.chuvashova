@@ -20,6 +20,26 @@ public class StoreRepository implements EntityRepository<Store> {
 
 
     @Override
+    public Store findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Store> query = sessionFactory.openSession().createQuery("select s from Store s  where s.id = :ID", Store.class);
+	query.setParameter("ID", id);
+	return query.getSingleResult();
+
+    }
+
+
+    @Override
+    public Store findByContent(String idStaff) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Store> query = sessionFactory.openSession().createNativeQuery("select * from store   where staff_id = :staff_id", Store.class);
+	query.setParameter("staff_id", idStaff);
+	return query.getSingleResult();
+
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
     }
@@ -45,26 +65,6 @@ public class StoreRepository implements EntityRepository<Store> {
 
     @Override
     public void update(Store tableEntity) {
-
-    }
-
-
-    @Override
-    public Store findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Store> query = sessionFactory.openSession().createQuery("select s from Store s  where s.id = :ID", Store.class);
-	query.setParameter("ID", id);
-	return query.getSingleResult();
-
-    }
-
-
-    @Override
-    public Store findByContent(String idStaff) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Store> query = sessionFactory.openSession().createNativeQuery("select * from store   where staff_id = :staff_id", Store.class);
-	query.setParameter("staff_id", idStaff);
-	return query.getSingleResult();
 
     }
 

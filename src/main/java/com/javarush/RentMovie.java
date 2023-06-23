@@ -4,7 +4,10 @@ import com.javarush.DTO.PaymentDTO;
 import com.javarush.DTO.RentalDTO;
 import com.javarush.entity.*;
 import com.javarush.repository.*;
-import com.javarush.services.*;
+import com.javarush.services.InventoryService;
+import com.javarush.services.PaymentService;
+import com.javarush.services.RentalService;
+import com.javarush.services.StoreService;
 import com.javarush.session_provider.PropertiesSessionProvider;
 
 import java.math.BigDecimal;
@@ -34,9 +37,6 @@ public class RentMovie {
 
 
     InventoryService inventoryService = new InventoryService(inventoryRepository);
-
-
-    StaffService staffService = new StaffService(staffRepository);
 
 
     StoreService storeService = new StoreService(storeRepository);

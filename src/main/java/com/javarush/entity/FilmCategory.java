@@ -17,6 +17,7 @@ import java.util.Date;
 public class FilmCategory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false, columnDefinition = "tinyint UNSIGNED not null")
     private Category category;

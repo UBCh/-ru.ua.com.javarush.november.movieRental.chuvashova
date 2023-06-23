@@ -46,9 +46,6 @@ public class BuyerRegistration {
 	Store store = customerService.getStore(customerDTO.getStoreNumber());
 	customerDTO.setStore(store);
 	Customer newCustomer = customerService.createNewCustomer(customerDTO);
-	String date = String.valueOf(newCustomer.getLast_update());
-	String city1 = newCustomer.getAddress().getCity().getCity();
-
 	System.out.print(newCustomer.getLastName() + newCustomer.getLast_update());
     }
 

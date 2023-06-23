@@ -21,20 +21,11 @@ public class FilmCategoryRepository implements EntityRepository<FilmCategory> {
 
 
     @Override
-    public void create(Map<String, Object> map) {
-
-    }
-
-
-    @Override
-    public List<FilmCategory> getAll() {
-	return null;
-    }
-
-
-    @Override
-    public void delete(FilmCategory tableEntity) {
-
+    public FilmCategory findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<FilmCategory> query = sessionFactory.openSession().createQuery("select f from FilmCategory f  where f.film.id = :ID", FilmCategory.class);
+	query.setParameter("ID", id);
+	return query.getSingleResult();
     }
 
 
@@ -57,11 +48,20 @@ public class FilmCategoryRepository implements EntityRepository<FilmCategory> {
 
 
     @Override
-    public FilmCategory findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<FilmCategory> query = sessionFactory.openSession().createQuery("select f from FilmCategory f  where f.film.id = :ID", FilmCategory.class);
-	query.setParameter("ID", id);
-	return query.getSingleResult();
+    public void create(Map<String, Object> map) {
+
+    }
+
+
+    @Override
+    public List<FilmCategory> getAll() {
+	return null;
+    }
+
+
+    @Override
+    public void delete(FilmCategory tableEntity) {
+
     }
 
 

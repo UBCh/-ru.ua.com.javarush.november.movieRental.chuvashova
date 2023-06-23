@@ -44,18 +44,6 @@ public class RentalRepository implements EntityRepository<Rental> {
 
 
     @Override
-    public List<Rental> getAll() {
-	return null;
-    }
-
-
-    @Override
-    public void delete(Rental tableEntity) {
-
-    }
-
-
-    @Override
     public void save(Rental tableEntity) {
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 	Rental rental = tableEntity;
@@ -80,6 +68,15 @@ public class RentalRepository implements EntityRepository<Rental> {
 
 
     @Override
+    public List<Rental> findList(String inventoryId) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Rental> query = sessionFactory.openSession().createNativeQuery("select * from rental   where inventory_id = :inventory_id", Rental.class);
+	query.setParameter("inventory_id", inventoryId);
+	return query.list();
+    }
+
+
+    @Override
     public Rental findById(long id) {
 
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
@@ -90,18 +87,22 @@ public class RentalRepository implements EntityRepository<Rental> {
 
 
     @Override
-    public Rental findByContent(String idInventory) {
-
+    public List<Rental> getAll() {
 	return null;
     }
 
 
     @Override
-    public List<Rental> findList(String inventoryId) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Rental> query = sessionFactory.openSession().createNativeQuery("select * from rental   where inventory_id = :inventory_id", Rental.class);
-	query.setParameter("inventory_id", inventoryId);
-	return query.list();
+    public void delete(Rental tableEntity) {
+
     }
+
+
+    @Override
+    public Rental findByContent(String idInventory) {
+
+	return null;
+    }
+
 }
 

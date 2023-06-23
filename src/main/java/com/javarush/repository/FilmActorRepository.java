@@ -25,8 +25,11 @@ public class FilmActorRepository implements EntityRepository<FilmActor> {
 
 
     @Override
-    public void create(Map map) {
-
+    public List<FilmActor> findList(String filmId) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<FilmActor> query = sessionFactory.openSession().createNativeQuery("select * from film_Actor   where film_id = :film_id", FilmActor.class);
+	query.setParameter("film_id", filmId);
+	return query.list();
     }
 
 
@@ -50,7 +53,12 @@ public class FilmActorRepository implements EntityRepository<FilmActor> {
 
 
     @Override
-    public void delete(FilmActor tableEntity) {
+    public FilmActor findById(long filmId) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<FilmActor> query = sessionFactory.openSession().createNativeQuery("select * from film_Actor   where film_id = :film_id", FilmActor.class);
+	query.setParameter("film_id", filmId);
+	aList = query.list();
+	return aList.get(0);
 
     }
 
@@ -74,12 +82,13 @@ public class FilmActorRepository implements EntityRepository<FilmActor> {
 
 
     @Override
-    public FilmActor findById(long filmId) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<FilmActor> query = sessionFactory.openSession().createNativeQuery("select * from film_Actor   where film_id = :film_id", FilmActor.class);
-	query.setParameter("film_id", filmId);
-	aList = query.list();
-	return aList.get(0);
+    public void delete(FilmActor tableEntity) {
+
+    }
+
+
+    @Override
+    public void create(Map map) {
 
     }
 
@@ -89,12 +98,4 @@ public class FilmActorRepository implements EntityRepository<FilmActor> {
 	return null;
     }
 
-
-    @Override
-    public List<FilmActor> findList(String filmId) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<FilmActor> query = sessionFactory.openSession().createNativeQuery("select * from film_Actor   where film_id = :film_id", FilmActor.class);
-	query.setParameter("film_id", filmId);
-	return query.list();
-    }
 }

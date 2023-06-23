@@ -46,18 +46,6 @@ public class PaymentRepository implements EntityRepository<Payment> {
 
 
     @Override
-    public List<Payment> getAll() {
-	return null;
-    }
-
-
-    @Override
-    public void delete(Payment tableEntity) {
-
-    }
-
-
-    @Override
     public void save(Payment tableEntity) {
 	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
 	Payment payment = tableEntity;
@@ -66,12 +54,6 @@ public class PaymentRepository implements EntityRepository<Payment> {
 	    session.save(payment);
 	    transaction.commit();
 	}
-    }
-
-
-    @Override
-    public void update(Payment tableEntity) {
-
     }
 
 
@@ -93,6 +75,24 @@ public class PaymentRepository implements EntityRepository<Payment> {
 	Query<Payment> query = sessionFactory.openSession().createNativeQuery("select * from payment   where rental_id = :rental_id", Payment.class);
 	query.setParameter("rental_id", idRental);
 	return query.getSingleResult();
+    }
+
+
+    @Override
+    public List<Payment> getAll() {
+	return null;
+    }
+
+
+    @Override
+    public void delete(Payment tableEntity) {
+
+    }
+
+
+    @Override
+    public void update(Payment tableEntity) {
+
     }
 
 

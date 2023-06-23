@@ -1,6 +1,5 @@
 package com.javarush.services;
 
-import com.javarush.DTO.StoreDTO;
 import com.javarush.entity.Store;
 import com.javarush.repository.EntityRepository;
 import lombok.SneakyThrows;
@@ -12,12 +11,6 @@ public class StoreService {
 
     public StoreService(EntityRepository<Store> storeRepository) {
 	this.storeRepository = storeRepository;
-    }
-
-
-    public Store createNewStore(StoreDTO storeDTO) {
-
-	return null;
     }
 
 

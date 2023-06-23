@@ -36,6 +36,16 @@ public class FilmTextRepository implements EntityRepository<FilmText> {
 
 
     @Override
+    public FilmText findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(FilmText.class, id);
+	}
+
+    }
+
+
+    @Override
     public List<FilmText> getAll() {
 	return null;
     }
@@ -55,16 +65,6 @@ public class FilmTextRepository implements EntityRepository<FilmText> {
 
     @Override
     public void update(FilmText tableEntity) {
-
-    }
-
-
-    @Override
-    public FilmText findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    return session.find(FilmText.class, id);
-	}
 
     }
 

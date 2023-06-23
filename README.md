@@ -27,7 +27,7 @@
 
 - maven project created, dependencies included
 - deployed database locally end Connected in Idea as datasource
-  -all necessary entity classes have been created and mapped to movie schema tables.
+- all necessary entity classes have been created and mapped to movie schema tables.
 - created interface EntityRepository<T> and all its necessary implementations
 - created services to interact with each implementation interface EntityRepository<T>
 - implemented functionality to create a new customer
@@ -37,21 +37,23 @@
 
 ## implementation features
 
-- the main class implements auxiliary functionality that simulates receiving data from the user
+- the creatorDTO class implements auxiliary functionality that simulates receiving data from the user
 
-## запуск на локальной машине
+## run on local machine
 
-- запустить Docker
-- стартовать контейнер mySQL
-- стартовать контейнер Redis
+- deployed database locally end Connected in Idea as datasourc
+- enter the necessary data in the creatorDato class in order to avoid duplication of data saved to the database
 - RUN
 
-## отчет
+## identified errors in the database architecture
 
-- результат тестирования выводится в консоль.
-- в виде (пример)
-  Redis:    173 ms
-  MySQL:    735 ms
-  H2DB:    638 ms
+- absence of foreign key in the film_text table on the film_id field of the film table
+- the title and description columns are duplicated in the film and text_film tables
+- in film table
+  the title column is set to varchar(128), which
+  does not match the characteristic of the title column in the text_film varchar(255) table
+- the appointment of the staff_id column in the store table is not clear,
+  foreign key in the store table on the staff_id field of the staff table on the manager_staff_id field
+  
 
 

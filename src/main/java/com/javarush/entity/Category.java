@@ -16,7 +16,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "category")
 public class Category {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 

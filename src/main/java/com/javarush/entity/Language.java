@@ -15,6 +15,7 @@ import java.util.Date;
 @Table(name = "language")
 public class Language {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "language_id", columnDefinition = "tinyint UNSIGNED not null")
     private Integer id;
 

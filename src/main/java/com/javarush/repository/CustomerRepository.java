@@ -46,8 +46,24 @@ public class CustomerRepository implements EntityRepository<Customer> {
 
 
     @Override
-    public List<Customer> getAll() {
-	return null;
+    public void update(Customer tableEntity) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Customer customer = tableEntity;
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.save(customer);
+	    transaction.commit();
+	}
+    }
+
+
+    @Override
+    public Customer findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    Customer customer = session.find(Customer.class, id);
+	    return customer;
+	}
     }
 
 
@@ -79,24 +95,8 @@ public class CustomerRepository implements EntityRepository<Customer> {
 
 
     @Override
-    public void update(Customer tableEntity) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Customer customer = tableEntity;
-	try (Session session = sessionFactory.openSession()) {
-	    Transaction transaction = session.beginTransaction();
-	    session.save(customer);
-	    transaction.commit();
-	}
-    }
-
-
-    @Override
-    public Customer findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    Customer customer = session.find(Customer.class, id);
-	    return customer;
-	}
+    public List<Customer> getAll() {
+	return null;
     }
 
 }

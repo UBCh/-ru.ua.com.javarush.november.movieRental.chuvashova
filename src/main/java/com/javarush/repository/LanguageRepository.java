@@ -21,6 +21,24 @@ public class LanguageRepository implements EntityRepository<Language> {
 
 
     @Override
+    public Language findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(Language.class, id);
+	}
+    }
+
+
+    @Override
+    public Language findByContent(String name) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Language> query = sessionFactory.openSession().createQuery("select l from Language l  where l.name = :name", Language.class);
+	query.setParameter("name", name);
+	return query.getSingleResult();
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
     }
@@ -47,24 +65,6 @@ public class LanguageRepository implements EntityRepository<Language> {
     @Override
     public void update(Language tableEntity) {
 
-    }
-
-
-    @Override
-    public Language findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    return session.find(Language.class, id);
-	}
-    }
-
-
-    @Override
-    public Language findByContent(String name) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Language> query = sessionFactory.openSession().createQuery("select l from Language l  where l.name = :name", Language.class);
-	query.setParameter("name", name);
-	return query.getSingleResult();
     }
 
 

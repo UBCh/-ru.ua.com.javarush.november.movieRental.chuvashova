@@ -19,6 +19,24 @@ public class CityRepository implements EntityRepository<City> {
 
 
     @Override
+    public City findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(City.class, id);
+	}
+    }
+
+
+    @Override
+    public City findByContent(String name) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<City> query = sessionFactory.openSession().createQuery("select c from City c  where c.city = :city", City.class);
+	query.setParameter("city", name);
+	return query.getSingleResult();
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
     }
@@ -45,24 +63,6 @@ public class CityRepository implements EntityRepository<City> {
     @Override
     public void update(City tableEntity) {
 
-    }
-
-
-    @Override
-    public City findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    return session.find(City.class, id);
-	}
-    }
-
-
-    @Override
-    public City findByContent(String name) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<City> query = sessionFactory.openSession().createQuery("select c from City c  where c.city = :city", City.class);
-	query.setParameter("city", name);
-	return query.getSingleResult();
     }
 
 

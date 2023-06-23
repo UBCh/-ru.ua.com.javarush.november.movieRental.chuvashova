@@ -19,6 +19,15 @@ public class ActorRepository implements EntityRepository<Actor> {
 
 
     @Override
+    public Actor findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(Actor.class, id);
+	}
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
     }
@@ -45,15 +54,6 @@ public class ActorRepository implements EntityRepository<Actor> {
     @Override
     public void update(Actor tableEntity) {
 
-    }
-
-
-    @Override
-    public Actor findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    return session.find(Actor.class, id);
-	}
     }
 
 

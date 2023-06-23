@@ -21,6 +21,27 @@ public class CategoryRepository implements EntityRepository<Category> {
 
 
     @Override
+    public void save(Category tableEntity) {
+	Category category = tableEntity;
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    Transaction transaction = session.beginTransaction();
+	    session.save(category);
+	    transaction.commit();
+	}
+    }
+
+
+    @Override
+    public Category findByContent(String content) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Category> query = sessionFactory.openSession().createQuery("select c from Category c  where c.name = :name", Category.class);
+	query.setParameter("name", content);
+	return query.getSingleResult();
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
     }
@@ -39,18 +60,6 @@ public class CategoryRepository implements EntityRepository<Category> {
 
 
     @Override
-    public void save(Category tableEntity) {
-	Category category = tableEntity;
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    Transaction transaction = session.beginTransaction();
-	    session.save(category);
-	    transaction.commit();
-	}
-    }
-
-
-    @Override
     public void update(Category tableEntity) {
 
     }
@@ -59,15 +68,6 @@ public class CategoryRepository implements EntityRepository<Category> {
     @Override
     public Category findById(long id) {
 	return null;
-    }
-
-
-    @Override
-    public Category findByContent(String content) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Category> query = sessionFactory.openSession().createQuery("select c from Category c  where c.name = :name", Category.class);
-	query.setParameter("name", content);
-	return query.getSingleResult();
     }
 
 

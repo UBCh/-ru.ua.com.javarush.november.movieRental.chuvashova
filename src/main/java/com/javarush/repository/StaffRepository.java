@@ -19,6 +19,15 @@ public class StaffRepository implements EntityRepository<Staff> {
 
 
     @Override
+    public Staff findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Staff> query = sessionFactory.openSession().createQuery("select s from Staff s  where s.id = :ID", Staff.class);
+	query.setParameter("ID", id);
+	return query.getSingleResult();
+    }
+
+
+    @Override
     public void create(Map<String, Object> map) {
 
 
@@ -46,15 +55,6 @@ public class StaffRepository implements EntityRepository<Staff> {
     @Override
     public void update(Staff tableEntity) {
 
-    }
-
-
-    @Override
-    public Staff findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Staff> query = sessionFactory.openSession().createQuery("select s from Staff s  where s.id = :ID", Staff.class);
-	query.setParameter("ID", id);
-	return query.getSingleResult();
     }
 
 

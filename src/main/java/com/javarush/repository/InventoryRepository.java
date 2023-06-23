@@ -48,6 +48,15 @@ public class InventoryRepository implements EntityRepository<Inventory> {
 
 
     @Override
+    public Inventory findByContent(String dataInventory) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Inventory> query = sessionFactory.openSession().createQuery("select i from Inventory i  where i.last_update = :dataInventory", Inventory.class);
+	query.setParameter("dataInventory", dataInventory);
+	return query.getSingleResult();
+    }
+
+
+    @Override
     public List<Inventory> getAll() {
 	return null;
     }
@@ -74,15 +83,6 @@ public class InventoryRepository implements EntityRepository<Inventory> {
     @Override
     public Inventory findById(long id) {
 	return null;
-    }
-
-
-    @Override
-    public Inventory findByContent(String dataInventory) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Inventory> query = sessionFactory.openSession().createQuery("select i from Inventory i  where i.last_update = :dataInventory", Inventory.class);
-	query.setParameter("dataInventory", dataInventory);
-	return query.getSingleResult();
     }
 
 }

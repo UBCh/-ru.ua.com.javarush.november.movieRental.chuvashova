@@ -61,8 +61,20 @@ public class FilmRepository implements EntityRepository<Film> {
 
 
     @Override
-    public void delete(Film tableEntity) {
+    public Film findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Film> query = sessionFactory.openSession().createQuery("select f from Film f  where f.id = :ID", Film.class);
+	query.setParameter("ID", id);
+	return query.getSingleResult();
+    }
 
+
+    @Override
+    public Film findByContent(String title) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	Query<Film> query = sessionFactory.openSession().createQuery("select f from Film f  where  f.title = :title", Film.class);
+	query.setParameter("title", title);
+	return query.getSingleResult();
     }
 
 
@@ -84,20 +96,8 @@ public class FilmRepository implements EntityRepository<Film> {
 
 
     @Override
-    public Film findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Film> query = sessionFactory.openSession().createQuery("select f from Film f  where f.id = :ID", Film.class);
-	query.setParameter("ID", id);
-	return query.getSingleResult();
-    }
+    public void delete(Film tableEntity) {
 
-
-    @Override
-    public Film findByContent(String title) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	Query<Film> query = sessionFactory.openSession().createQuery("select f from Film f  where  f.title = :title", Film.class);
-	query.setParameter("title", title);
-	return query.getSingleResult();
     }
 
 

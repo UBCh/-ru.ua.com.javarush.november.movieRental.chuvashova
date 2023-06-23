@@ -14,7 +14,6 @@ public class FilmText {
 
 
     @Id
-    
     @Column(name = "film_id", columnDefinition = "smallint UNSIGNED not null")
     private Integer filmId;
 

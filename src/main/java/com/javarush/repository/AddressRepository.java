@@ -43,8 +43,11 @@ public class AddressRepository implements EntityRepository<Address> {
 
 
     @Override
-    public List<Address> getAll() {
-	return null;
+    public Address findById(long id) {
+	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
+	try (Session session = sessionFactory.openSession()) {
+	    return session.find(Address.class, id);
+	}
     }
 
 
@@ -53,6 +56,12 @@ public class AddressRepository implements EntityRepository<Address> {
 	Query<Address> query = sessionFactory.openSession().createQuery("select a from Address a  where a.phone = :phone", Address.class);
 	query.setParameter("phone", phone);
 	return query.getSingleResult();
+    }
+
+
+    @Override
+    public List<Address> getAll() {
+	return null;
     }
 
 
@@ -77,15 +86,6 @@ public class AddressRepository implements EntityRepository<Address> {
     @Override
     public void update(Address tableEntity) {
 
-    }
-
-
-    @Override
-    public Address findById(long id) {
-	SessionFactory sessionFactory = sessionProvider.getSessionFactory();
-	try (Session session = sessionFactory.openSession()) {
-	    return session.find(Address.class, id);
-	}
     }
 
 }
