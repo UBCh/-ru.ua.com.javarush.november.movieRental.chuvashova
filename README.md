@@ -51,7 +51,7 @@ implements auxiliary functionality that simulates receiving data from the user
   [database locally](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/resources/dump-hibernate-2.sql)
   end Connected in Idea as datasource
 - enter the necessary data in the creatorDTO class in order to avoid duplication of data saved to the database
-- RUN
+- [RUN ](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/Main.java)
 
 ## identified errors in the database architecture
 
