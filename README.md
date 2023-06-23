@@ -2,7 +2,6 @@
 
 - there is a database
   MySQL  ["movie"](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/movie.png).
-
 - map entities to existing tables
 - add functionality to create a new customer
 - add a transactional method that describes the "buyer went and returned a previously rented movie" event
@@ -44,7 +43,6 @@
 ## implementation features
 
 -
-
 the [creatorDTO class](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/creatorDTO.java)
 implements auxiliary functionality that simulates receiving data from the user
 
@@ -60,11 +58,10 @@ end Connected in Idea as datasourc
 
 - absence of foreign key in the film_text table on the film_id field of the film table
 - the title and description columns are duplicated in the film and text_film tables
-- in film table
-  the title column is set to varchar(128), which
-  does not match the characteristic of the title column in the text_film varchar(255) table
-- the appointment of the staff_id column in the store table is not clear,
-  foreign key in the store table on the staff_id field of the staff table on the manager_staff_id field
+- in film table the title column is set to varchar(128), which does not match the characteristic of the title column in
+  the text_film varchar(255) table
+- the appointment of the staff_id column in the store table is not clear, foreign key in the store table on the staff_id
+  field of the staff table on the manager_staff_id field
   
 
 
