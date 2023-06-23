@@ -42,16 +42,15 @@
 
 ## implementation features
 
--
 the [creatorDTO class](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/creatorDTO.java)
 implements auxiliary functionality that simulates receiving data from the user
 
 ## run on local machine
 
--
-deployed [database locally](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/resources/dump-hibernate-2.sql)
-end Connected in Idea as datasourc
-- enter the necessary data in the creatorDato class in order to avoid duplication of data saved to the database
+- deployed
+  [database locally](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/resources/dump-hibernate-2.sql)
+  end Connected in Idea as datasource
+- enter the necessary data in the creatorData class in order to avoid duplication of data saved to the database
 - RUN
 
 ## identified errors in the database architecture
