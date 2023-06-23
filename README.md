@@ -50,7 +50,7 @@ implements auxiliary functionality that simulates receiving data from the user
 - deployed
   [database locally](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/resources/dump-hibernate-2.sql)
   end Connected in Idea as datasource
-- enter the necessary data in the creatorData class in order to avoid duplication of data saved to the database
+- enter the necessary data in the creatorDTO class in order to avoid duplication of data saved to the database
 - RUN
 
 ## identified errors in the database architecture
