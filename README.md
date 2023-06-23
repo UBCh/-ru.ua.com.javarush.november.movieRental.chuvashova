@@ -1,6 +1,7 @@
 ## exercise
 
--there is a database MySQL  ["movie"]().
+- there is a database
+  MySQL  ["movie"](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/movie.png).
 
 - map entities to existing tables
 - add functionality to create a new customer
@@ -30,18 +31,28 @@
 - all necessary entity classes have been created and mapped to movie schema tables.
 - created interface EntityRepository<T> and all its necessary implementations
 - created services to interact with each implementation interface EntityRepository<T>
-- implemented functionality to create a new customer
-- implemented functionality for adding a new movie
-- implemented the functionality of returning a previously rented film to the store
-- implemented the functionality of creating a new event "to rent a movie"
+- implemented functionality
+  to [create a new customer](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/BuyerRegistration.java)
+- implemented functionality
+  for [adding a new movie](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/MovieRegistration.java)
+- implemented the functionality
+  of [returning a previously rented film](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/MovieReturn.java)
+  to the store
+- implemented the functionality of creating a new
+  event ["to rent a movie"](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/RentMovie.java)
 
 ## implementation features
 
-- the creatorDTO class implements auxiliary functionality that simulates receiving data from the user
+-
+
+the [creatorDTO class](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/java/com/javarush/creatorDTO.java)
+implements auxiliary functionality that simulates receiving data from the user
 
 ## run on local machine
 
-- deployed database locally end Connected in Idea as datasourc
+-
+deployed [database locally](https://github.com/UBCh/-ru.ua.com.javarush.november.movieRental.chuvashova/blob/total/src/main/resources/dump-hibernate-2.sql)
+end Connected in Idea as datasourc
 - enter the necessary data in the creatorDato class in order to avoid duplication of data saved to the database
 - RUN
 
