@@ -26,7 +26,7 @@ public class creatorDTO {
 	LanguageService languageService = new LanguageService(new LanguageRepository(new PropertiesSessionProvider()));
 	Language language = languageService.getLanguage("English");
 	Integer[] idActor = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 10};
-	FilmDTO filmDTO = new FilmDTO("CALYPSOL-L-L-L",
+	FilmDTO filmDTO = new FilmDTO("CALYPSOL-L-L-L-L-L-L",
 		2006, language, language, (short) 0,
 		BigDecimal.valueOf(0), 120, BigDecimal.valueOf(0),
 		Rating.R, "Trailers,Commentaries",
@@ -40,7 +40,7 @@ public class creatorDTO {
     public CustomerDTO createCustomerDTO() {
 	return new CustomerDTO(
 		"Myycya", "Popovichaaa",
-		"jsi225iaaaigiiigd@mail.ru", "Arecibo", 1);
+		"js1ss11i5iaaaigiiigd@mail.ru", "Arecibo", 1);
 
     }
 
@@ -49,7 +49,7 @@ public class creatorDTO {
 	return new AdressDTO(
 		"MySakila Drive", "",
 		"Alberta", "156675",
-		"7572321");
+		"78931117721");
     }
 
 
@@ -62,7 +62,7 @@ public class creatorDTO {
 	HashMap<String, Object> map = new HashMap<>();
 	map.put("customerService", customerService);
 	map.put("filmService", filmService);
-	map.put("titleFilm", "CALYPSOL-L");
+	map.put("titleFilm", "CALYPSOL-L-L-L-L-L-L");
 	map.put("idCustomer", 588);
 	map.put("Deposit", 865);
 	map.put("storeId", 1);
